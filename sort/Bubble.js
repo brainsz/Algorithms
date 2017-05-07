@@ -40,7 +40,7 @@ function bubbleSort2(arr2){
 }
 console.log(bubbleSort2(arr));
 
-//第三种
+//第三种冒泡排序
 function bubbleSort3(arr3) {
     var low = 0;
     var high= arr.length-1; //设置变量的初始值
