@@ -1,6 +1,9 @@
 /**
  * Created by brains on 2017/3/7.
  */
+
+    //冒泡排序算法是稳定排序算法，因为比较的时候，如果等于是不会被交换的，所以相对位置不变
+    //时间复杂度:最坏(O(n^2)),最好(O(n)),平均(O(n^2))，空间复杂度:O(1)
 var arr=[4,3,6,2,8,4,7,6];
 function BubbleSort(arr){
     var len=arr.length;
@@ -18,24 +21,24 @@ function BubbleSort(arr){
 //改进冒泡排序
 //设置一个标志变量pos，用于记录每趟排序中最后一次进行交换的位置
 //由于pos之后的记录都已经交换到位，故在下一趟排序中只需要扫描到pos位置即可
-function bubbleSort2(arr){
-
-    console.time('改进后冒泡排序耗时');
-    var i=arr.length-1;  //初始时,最后位置保持不变
+function bubbleSort2(arr2){
+    var i=arr2.length-1;
     while(i>0){
-        var pos=0;//每趟开始时,无记录交换
-        for(var j=0;j<i;j++)
-            if(arr[j]>arr[j+1]){
-                pos=j;//记录交换的位置
-                var tmp=arr[j];
-                arr[j]=arr[j+1];
-                arr[j+1]=tmp;
+        var pos=0;
+        for(var j=0;j<i;j++){
+            if(arr2[j]>arr2[j+1]){
+                //如果交换了记录，则记下交换的下标,下次只循环到这个交换了记录的下标
+                pos=j;
+                var temp=arr2[j];
+                arr2[j]=arr2[j+1];
+                arr2[j+1]=temp;
             }
-        i=pos;//为下一趟排序作准备
+        }
+        i=pos;
     }
-    console.timeEnd('改进后冒泡排序耗时');
-    return arr;
+    return arr2;
 }
+console.log(bubbleSort2(arr));
 
 //第三种
 function bubbleSort3(arr3) {
