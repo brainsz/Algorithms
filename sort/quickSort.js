@@ -39,8 +39,30 @@ function quickSort1(left,right,arr){
         return arr;
 }
 
-//
+//第二种快速排序方法
+//需要借助辅助空间数组，这种方法不是很推荐
+function quickSort2(arr){
+    //如果数组只有一个元素，返回，递归
+    if(arr.length<2){
+        return arr;
+    }
+    //把长度右移一位,找到中间的下标
+    var pivotIndex=arr.length>>1;
+    //删除中间的基准数字，并且取出来与后面的比较
+    var pivot=arr.splice(pivotIndex,1)[0];
+    var left=[],
+        right=[];
+    for(var i=0;i<arr.length;i++){
+        if(arr[i]<pivot){
+            left.push(arr[i]);
+        }else{
+            right.push(arr[i]);
+        }
+    }
+    return quickSort2(left).concat([pivot]).concat(quickSort2(right));
+}
 
 
 var arr2=[9,8,7,6,5,4,3,2,1];
 console.log(quickSort1(0,arr2.length-1,arr2));
+console.log(quickSort2(arr2)==arr2.sort());
