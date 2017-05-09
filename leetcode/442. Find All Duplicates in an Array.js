@@ -19,12 +19,12 @@
  [2,3]
  * */
 //目的是要找出数组中出现了两次的数字
-//思路:用一个哈希表存储数组中元素出现的个数
 /**
  * @param {number[]} nums
  * @return {number[]}
  */
 var findDuplicates = function(nums) {
+    //第一种解法:用一个哈希表存储数组中元素出现的个数，出现两次的就放到数组中
     var hash={};
     for(var i=nums.length-1;i>=0;i--){
         if(hash[nums[i]]){
