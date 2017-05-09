@@ -34,6 +34,6 @@ var findMaxConsecutiveOnes = function(nums) {
             subMax=0;
         }
     }
-    return max;
+    return max>subMax?max:subMax;
 };
-console.log(findMaxConsecutiveOnes([1,1,0,0,1,1]));
+console.log(findMaxConsecutiveOnes([0]));
