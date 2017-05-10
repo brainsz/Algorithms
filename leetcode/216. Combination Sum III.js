@@ -15,12 +15,29 @@
  */
     //思路,先把小于n的数字的所有数字组合找出来，然后判断k个数字组成的组合等于n
 var combinationSum3 = function(k, n) {
-    var arr=[];
-    for(var i=1;i<=n;i++){
-        arr.push(i);
+    var res=[],
+        current=[];
+    if(k<1||n<1){
+        return res;
     }
-   return subSet(arr,k,n);
+    dfs(res,current,0,k,n,1);
+    return res;
 };
+//第二种方法可以采用递归
+var dfs=function(res,current,sum,k,n,level){
+    if(sum==n&&k==0){
+        //因为current会不断的改变，对current的引用也会改变，所以需要使用深复制
+        //slice(0)
+        res.push(current.slice(0));
+    }else if(sum>n||k<0){
+        return ;
+    }
+    for(var i=level;i<=9;i++){
+        current.push(i);
+        dfs(res,current,sum+i,k-1,n,i+1);
+        current.pop();
+    }
+}
 
 var subSet=function(arr,k,n){
     var result=[];
@@ -55,4 +72,4 @@ var subSet=function(arr,k,n){
     return result;
 }
 
-console.log(combinationSum3(2,18));
+console.log(combinationSum3(3,9));
