@@ -16,24 +16,29 @@
  * @param {number} k
  * @return {number}
  */
-var subarraySum = function(nums, k) {
-    nums.sort(function(a,b){
-        return a-b;
-    })
-    var left=0,
-        right=nums.length-1,
-        count=0;
-    while(left<right){
 
-        if((nums[left]+nums[right])==k){
-            count++;
+/**
+ *思路:从数组的第1项开始,对数组进行求和,用一个map存储sum的值，如果已经存储过，则对应的value+1
+ * 判断sum-k是否在map中，如果在map中，则加上对应的value值
+ * map中首先存储一对key value值(0,1)
+ * */
+
+var subarraySum = function (nums, k) {
+    var sum = 0,
+        count = 0,
+        hashMap = {};
+    hashMap[0] = 1;
+    for (var i = 0; i < nums.length; i++) {
+        sum += nums[i];
+        if (hashMap[sum - k]) {
+            count += hashMap[sum - k];
         }
-       if((nums[left]+nums[right])<k){
-            left++;
-        }else{
-            right--;
+        if (hashMap[sum]) {
+            hashMap[sum] += 1;
+        } else {
+            hashMap[sum] = 1;
         }
     }
     return count;
 };
-console.log(subarraySum([1,2,3],3));
+console.log(subarraySum([1, 1, 1], 2));

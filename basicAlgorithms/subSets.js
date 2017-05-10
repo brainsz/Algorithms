@@ -9,7 +9,6 @@
 //第一种方法:位运算  数组中的n个数可以用n个二进制位表示，
 // 当某一位为1表示选择对应的数，为0表示不选择对应的数
 
-
 var subSets=function(arr){
     var max=1<<arr.length;
     var result=[];
