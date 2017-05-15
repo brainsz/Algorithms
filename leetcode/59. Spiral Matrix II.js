@@ -27,11 +27,14 @@ var generateMatrix = function(n) {
     }
     //生成一个二维数组
     var matrix=[];
-    for(var i=0;i<n;i++){
-        matrix[i]=[];
+    for(var a=0;a<n;a++){
+        matrix[a]=new Array();
         for(var j=0;j<n;j++){
-            matrix[i][j]=0;
+            matrix[a][j]=0;
         }
+    }
+    if(n==0){
+        return matrix;
     }
     var counter=1;
     //左右上下四个边界
@@ -40,6 +43,7 @@ var generateMatrix = function(n) {
         top=0,
         bottom=matrix.length-1,
         i;
+    console.log(bottom);
     while(true){
         //上边，自左至右
         for (i = left; i <= right; i++) {
@@ -75,4 +79,4 @@ var generateMatrix = function(n) {
     }
     return matrix;
 };
-console.log(generateMatrix(4));
+console.log(generateMatrix(0));
