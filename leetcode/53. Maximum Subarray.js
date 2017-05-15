@@ -22,8 +22,11 @@
     //但是因为需要求连续的数组元素，所有需要把这个连续的数值和全局记录的最大值进行比较
     //
 var maxSubArray = function(nums) {
-    var sum=0,
-        max_sum=Number.MIN_VALUE;
+    if(nums.length==0){
+        return 0
+    }
+    var sum=-Number.MAX_VALUE,
+        max_sum=-Number.MAX_VALUE;
     for(var i=0;i<nums.length;i++){
         if(sum>=0){
             sum+=nums[i];
