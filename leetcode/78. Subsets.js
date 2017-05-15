@@ -28,7 +28,7 @@
  * @return {number[][]}
  */
 
-    //位运算法，用二进制位数0和1代表nums中各个数字是否存在，刚好遍历完所有的数字
+    //位运算法，数组中的n个数可以用n个二进制位表示，当某一位为1表示选择对应的数，为0表示不选择对应的数
 var subsets = function(nums) {
     var max=1<<nums.length,
         result=[];
