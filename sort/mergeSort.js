@@ -33,3 +33,27 @@ function merge(left,right){
     return result.concat(left).concat(right);
 }
 var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+function mergeSort1(arr){
+    var len=arr.length;
+    //只有一个元素的时候返回
+    if(len<2){
+        return arr;
+    }
+
+    var middle=Math.floor(len/2),
+        left=arr.slice(0,middle),
+        right=arr.slice(middle,len);
+    return merge(mergeSort1(left),mergeSort1(right));
+}
+//排序
+function merge1(left,right){
+    var array=[];
+    while(left.length&&right.length){
+        if(left[0]<right[0]){
+            array.push(left.shift());
+        }else{
+            array.push(right.shift());
+        }
+    }
+    return arr.concat(left).concat(right);
+}
