@@ -28,6 +28,7 @@ var minPathSum = function(grid) {
     if(rows==1&&cols==1){
         return grid[0][0];
     }
+    //把所有的存储到一个二维数组中
     var dp=[];
     for(var i=0;i<rows;i++){
         var temp=[];
@@ -36,13 +37,15 @@ var minPathSum = function(grid) {
         }
         dp.push(temp);
     }
-    //初始化第一行和第一列
+    //初始化第一行
     for(var i=1;i<rows;i++){
         dp[i][0]+=dp[i-1][0];
     }
+    //初始化第一列
     for(var j=1;j<cols;j++){
         dp[0][j]+=dp[0][j-1];
     }
+    //
     for(var i=1;i<rows;i++){
         for(var j=1;j<cols;j++){
             dp[i][j]+=Math.min(dp[i-1][j],dp[i][j-1]);
