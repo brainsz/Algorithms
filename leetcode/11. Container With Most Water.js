@@ -34,5 +34,4 @@ var maxArea = function(height) {
     return maxS;
 };
 
-console.log(maxArea([2,6,7,1,3,2,8,2,4]));
 
