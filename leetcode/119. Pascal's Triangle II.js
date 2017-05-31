@@ -23,7 +23,6 @@ var getRow = function(rowIndex) {
     for(var i=0;i<rowIndex;i++){
         v.push(0);
     }
-
     for(var j = 0; j < rowIndex; ++j)
     {
         v[j] = 1;
@@ -33,7 +32,7 @@ var getRow = function(rowIndex) {
         }
         v[0] = 1;
     }
-    v[j]=1;
+    v[j] = 1;
     return v;
 };
-console.log(getRow(3));
+console.log(getRow(1));
