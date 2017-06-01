@@ -20,19 +20,18 @@ var getRow = function(rowIndex) {
     if(rowIndex<0){
         return v;
     }
-    for(var i=0;i<rowIndex;i++){
+    for(var i=0;i<=rowIndex;i++){
         v.push(0);
     }
-    for(var j = 0; j < rowIndex; ++j)
+    for(var j = 0; j <=rowIndex; ++j)
     {
-        v[j] = 1;
+        v[rowIndex] = 1;
         for(var k =rowIndex-1; k > 0; --k)
         {
             v[k] = v[k-1] + v[k];
         }
         v[0] = 1;
     }
-    v[j] = 1;
     return v;
 };
-console.log(getRow(1));
+console.log(getRow(2));
