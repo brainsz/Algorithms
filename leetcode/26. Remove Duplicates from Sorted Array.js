@@ -27,5 +27,8 @@ var removeDuplicates = function(nums) {
     }
     return nums.length;
 };
+var removeDuplicates2 = function(nums) {
+    return (new Set(nums)).size;
+};
 
-console.log(removeDuplicates([1,1,2]));
+console.log(removeDuplicates2([1,1,2]));
