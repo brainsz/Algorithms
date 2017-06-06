@@ -9,7 +9,7 @@
 
 //链式存储结构,节点对象的构造函数
 function BinaryTree(data,left,right){
-    this.data=data||null;
+    this.val=data||null;
     this.left=left||null;
     this.right=right||null;
 }
@@ -26,7 +26,7 @@ BinaryTree.prototype.insert=function(data){
             //当前节点设置为父节点
             parent=current;
             //如果小于当前根结点的值,则应该插入到左子树
-            if(data<current.data){
+            if(data<current.val){
                 //当前节点设置为左子树
                 current=current.left;
                 if(current==null){
@@ -48,7 +48,7 @@ BinaryTree.prototype.insert=function(data){
 function inOrder(node){
     if(!(node==null)){
         inOrder(node.left);
-        console.log(node.data);
+        console.log(node.val);
         inOrder(node.right);
     }
 }
@@ -61,7 +61,7 @@ function inOrderDFS(root){
     arr.push(root);
     while(arr.length!==0){
         var node=arr.pop();
-        console.log(node.data);
+        console.log(node.val);
         if(node.right){
             arr.push(node.right);
         }
@@ -78,17 +78,23 @@ function inOrderBFS(root){
     }
     let arr=[];
     arr.push(root);
+    var result;
     while(arr.length!==0){
-        //从第一个元素开始弹出
-        let node=arr.shift();
-        console.log(node.data);
-        if(node.left){
-            arr.push(node.left);
-        }
-        if(node.right){
-            arr.push(node.right)
+        var size=arr.length;
+        result=arr[0].val;
+        while(size--){
+            //从第一个元素开始弹出
+            let node=arr.shift();
+            //console.log(node.val);
+            if(node.left){
+                arr.push(node.left);
+            }
+            if(node.right){
+                arr.push(node.right)
+            }
         }
     }
+    return result;
 }
 
 //非递归中序遍历
@@ -110,12 +116,27 @@ function inOrderStack(root){
         }
         if(arr.length){
             p=arr.pop();
-            console.log(p.data);
+            console.log(p.val);
             arr.push(p.right);
             p=p.right;
         }
     }
 }
+var convertBST = function(root) {
+    var temp=0;
+    if(root==null){
+        return null;
+    }
+    root&&add(root)
+    function add(root){
+        //console.log(root.val);
+        root.right&&add(root.right)
+        root.val+=temp;
+        temp=root.val;
+        console.log(temp);
+        root.left&&add(root.left)
+    }
+};
 
 
 var root=null;
@@ -130,4 +151,4 @@ nums.insert(3)
 nums.insert(99)
 nums.insert(22)
 
-inOrderStack(nums.root)
+convertBST(nums.root)
